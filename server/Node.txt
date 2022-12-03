@@ -1,0 +1,35 @@
+1. super user
+name:hkfinder
+pwd:hkfinder
+
+2.
+test data:
+1) customer:
+test_customer2
+
+2) housekeeper
+test_housekeeper2
+test_housekeeper3
+
+url:
+http://localhost:8080/#/log-in
+
+
+3.reset docker
+docker system prune --all --force
+docker-compose up -d --build
+docker-compose exec XX-database psql -U postgres
+CREATE USER taxi WITH SUPERUSER CREATEDB CREATEROLE PASSWORD 'XX';
+CREATE DATABASE xx OWNER xx;
+docker-compose exec taxi-server python manage.py migrate
+docker-compose up -d --build
+docker-compose exec taxi-server python manage.py migrate
+docker-compose exec taxi-server python manage.py createsuperuser
+
+python manage.py collectstatic --noinput
+
+
+4.
+1st DEC
+1) datatime.now() has some conflict with current django version
+2) my credit card expired, then my goodle map API is invalid, then I have to reset it.
